@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'root'
 app.config['MYSQL_DB'] = 'helloworld'
-app.config['MYSQL_HOST'] = 'mysql'
+app.config['MYSQL_HOST'] = 'mysql.service.consul'
 
 mysql = MySQL(app)
 
