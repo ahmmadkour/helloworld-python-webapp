@@ -32,6 +32,7 @@ services:
     dns:
       - 172.30.0.2
   webapp:
+    image: webapp
     build: ./webapp/
     ports:
       - "8080:8080"
