@@ -14,12 +14,17 @@ mysql = MySQL(app)
 
 @app.route("/")
 def main():
-    cur = mysql.connection.cursor()
-    query="SELECT value FROM webapp where msg = %s"
-    param="index"
-    cur.execute(query, [param])
-    row = cur.fetchone()
-    return row
+
+    try:
+        cur = mysql.connection.cursor()
+        query="SELECT value FROM webapp where msg = %s"
+        param="index"
+        cur.execute(query, [param])
+        res = cur.fetchone()
+    except:
+       res = "Error: can't fetch data from the database"
+
+    return res
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
