@@ -13,7 +13,7 @@ services:
       webapp_net:
         ipv4_address: 172.30.0.2
   registrator:
-    image: 'gliderlabs/registrator'
+    image: 'gliderlabs/registrator:v7'
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
     command: -internal consul://172.30.0.2:8500
