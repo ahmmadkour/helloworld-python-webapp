@@ -15,6 +15,7 @@ while isreachable is False:
         MYSQL_PORT = answers[0].port
         isreachable = True
     except:
+        print "Failed: can't lookup DNS SRV for", MYSQL_HOST
         time.sleep(2)
 
 
@@ -39,6 +40,7 @@ def main():
         res = cur.fetchone()
     except:
        res = "Error: can't fetch data from the database"
+       print res
 
     return res
 
