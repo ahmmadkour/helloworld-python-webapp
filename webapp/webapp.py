@@ -1,14 +1,22 @@
 from flask import Flask
 from flask_mysqldb import MySQL
 import dns.resolver
+import time
 
 app = Flask(__name__)
 
 MYSQL_HOST = 'mysql.service.consul'
 
 # Get MySQL port
-answers = dns.resolver.query(MYSQL_HOST, 'SRV')
-MYSQL_PORT = answers[0].port
+isreachable = False
+while isreachable is False:
+    try:
+        answers = dns.resolver.query(MYSQL_HOST, 'SRV')
+        MYSQL_PORT = answers[0].port
+        isreachable = True
+    except:
+        time.sleep(2)
+
 
 # MySQL configurations
 app.config['MYSQL_USER'] = 'root'
